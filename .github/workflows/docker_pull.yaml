@@ -1,0 +1,20 @@
+name: docker pull
+on:
+  schedule:
+    - cron: '14 11 17 * *'
+  push:
+    branches:
+    - 'master'
+jobs:
+  converge:
+    name: docker pull
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - run: |
+        export PATH=$PATH:$(pwd)/bundler/bin
+        gem install --install-dir ./bundler bundler -v '2.2.6'
+        bundle config set path 'vendor/bundle'
+        bundle install
+        bundle exec docker_pull.rb
