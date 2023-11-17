@@ -1,7 +1,7 @@
 name: docker pull
 on:
   schedule:
-    - cron: '14 11 17 * *'
+    - cron: '14 11 * * *'
   push:
     branches:
     - 'master'
