@@ -9,10 +9,10 @@ on:
 jobs:
   converge:
     name: docker pull
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@main
     - run: |
         export PATH=$PATH:$(pwd)/bundler/bin
         gem install --install-dir ./bundler bundler -v '2.2.6'
